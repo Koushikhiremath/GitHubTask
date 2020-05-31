@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand text-light" href="www.github.com">Github</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+     </nav>
+
+<div class="container">
+    
+<div class="justify-content-center row mt-5">
+    <input class=" col-6 mr-sm-2 form-control" [(ngModel)]="username" name="username" type="search" placeholder="UserName" aria-label="Search">
+    <button class="col-2 btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSubmit()">Search</button>
+   
+</div>
+
+<div class="container mx-auto" *ngIf="load">
+
+    <div class="spinner-border mt-5 " role="status" style="margin-left: 500px;">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+</div>
+
+<div class="container mt-5" *ngIf="disp">
+    
+    
+    <div class="row">
+      <div class="col-sm">
+        
+        <a class="btn btn-primary" href="{{data.html_url}}" role="button">{{data.name}}</a>
+      </div>
+      <div class="col-sm">
+        <h5>ID:{{data.id}}</h5>
+      </div>
+      <div class="col-sm">
+        <img src="{{data.avatar_url}}" class="img-fluid" alt="Responsive image" style="width: 150px;">
+      </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-sm">
+          
+            <h5> Number of Followers: {{data.followers}}</h5>
+        </div>
+        <div class="col-sm">
+          <h5>Number of Following: {{data.following}}</h5>
+        </div>
+        <div class="col-sm">
+            <h5>Total Number of Repository: {{data.public_repos}}</h5>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-sm">
+          
+            <h5> Followers List:</h5>
+            <p *ngFor="let data of followers" > {{data.login}}</p>
+        </div>
+        <div class="col-sm">
+          <h5>Following List:</h5>
+          <p *ngFor="let data of following" > {{data.login}}</p>
+        </div>
+        <div class="col-sm">
+            <h5>Repository List: </h5>
+            <p *ngFor="let data of repo" > {{data.name}}</p>
+        </div>
+      </div>
+
+    </div>  
+
+  </div>
+  
